@@ -14,9 +14,9 @@ module Griddler
 
       def normalize_params
         {
-          to: params[:envelope][:to].split(','),
+          to: params[:headers]["To"].split('+'),
           cc: ccs,
-          from: params[:envelope][:from],
+          from: params[:headers]["From"],
           subject: params[:headers][:Subject],
           text: params[:plain],
           attachments: params.fetch(:attachments) { [] },
